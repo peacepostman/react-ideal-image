@@ -94,13 +94,13 @@ export default class Media extends PureComponent {
 
   renderImage(props) {
     return props.icon === loaded ? (
-      <img
+      <div {...compose(props.theme.div)}><img
         {...compose(props.theme.img)}
         src={props.src}
         alt={props.alt}
         width={props.width}
         height={props.height}
-      />
+      /></div>
     ) : (
       <svg
         {...compose(props.theme.img)}
