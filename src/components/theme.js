@@ -4,6 +4,9 @@ export default {
     backgroundRepeat: 'no-repeat',
     position: 'relative',
   },
+  div : {
+    position: 'relative'
+  },
   img: {
     width: '100%',
     height: 'auto',
