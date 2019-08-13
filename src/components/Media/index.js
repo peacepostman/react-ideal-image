@@ -94,13 +94,13 @@ export default class Media extends PureComponent {
 
   renderImage(props) {
     return props.icon === loaded ? (
-      <div {...compose(props.theme.div)}><img
+      <img
         {...compose(props.theme.img)}
         src={props.src}
         alt={props.alt}
         width={props.width}
         height={props.height}
-      /></div>
+      />
     ) : (
       <svg
         {...compose(props.theme.img)}
@@ -156,9 +156,11 @@ export default class Media extends PureComponent {
         onKeyPress={this.props.onClick}
         ref={this.props.innerRef}
       >
-        {this.renderImage(props)}
-        {this.renderNoscript(props)}
-        {this.renderIcon(props)}
+        <div {...compose(theme.div)}>
+          {this.renderImage(props)}
+          {this.renderNoscript(props)}
+          {this.renderIcon(props)}
+        </div>
       </div>
     )
   }
