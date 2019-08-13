@@ -96,12 +96,12 @@ function (_PureComponent) {
     value: function renderImage(props) {
       var _this = this;
 
-      return props.icon === loaded ? _react.default.createElement("div", (0, _composeStyle.default)(props.theme.div), _react.default.createElement("img", _extends({}, (0, _composeStyle.default)(props.theme.img), {
+      return props.icon === loaded ? _react.default.createElement("img", _extends({}, (0, _composeStyle.default)(props.theme.img), {
         src: props.src,
         alt: props.alt,
         width: props.width,
         height: props.height
-      }))) : _react.default.createElement("svg", _extends({}, (0, _composeStyle.default)(props.theme.img), {
+      })) : _react.default.createElement("svg", _extends({}, (0, _composeStyle.default)(props.theme.img), {
         width: props.width,
         height: props.height,
         ref: function ref(_ref) {
@@ -144,7 +144,7 @@ function (_PureComponent) {
         onClick: this.props.onClick,
         onKeyPress: this.props.onClick,
         ref: this.props.innerRef
-      }), this.renderImage(props), this.renderNoscript(props), this.renderIcon(props));
+      }), _react.default.createElement("div", (0, _composeStyle.default)(theme.div), this.renderImage(props), this.renderNoscript(props), this.renderIcon(props)));
     }
   }]);
 

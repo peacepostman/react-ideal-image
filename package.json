@@ -17,7 +17,6 @@
     "test:ts": "tsc --noEmit -p ./tsconfig.json",
     "validate": "npm run test:ts && kcd-scripts validate",
     "setup": "npm install && npm run validate -s",
-    "precommit": "kcd-scripts precommit",
     "styleguide": "styleguidist server",
     "styleguide:build": "styleguidist build",
     "predeploy": "styleguidist build",
