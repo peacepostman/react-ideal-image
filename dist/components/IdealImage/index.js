@@ -390,7 +390,9 @@ function (_Component) {
       var message = this.props.getMessage(icon, this.state);
       return _react.default.createElement(_reactWaypoint.default, {
         onEnter: this.onEnter,
-        onLeave: this.onLeave
+        onLeave: this.onLeave,
+        bottomOffset: this.props.bottomOffset,
+        topOffset: this.props.topOffset
       }, _react.default.createElement(_Media.default, _extends({}, this.props, (0, _helpers.fallbackParams)(this.props), {
         onClick: this.onClick,
         icon: icon,
@@ -458,7 +460,13 @@ _defineProperty(IdealImage, "propTypes", {
   icons: _propTypes.default.object.isRequired,
 
   /** theme object - CSS Modules or React styles */
-  theme: _propTypes.default.object.isRequired
+  theme: _propTypes.default.object.isRequired,
+
+  /** Treshold distance from bottom in waypoint  */
+  bottomOffset: _propTypes.default.string,
+
+  /** Treshold distance from top in waypoint  */
+  topOffset: _propTypes.default.string
 });
 
 _defineProperty(IdealImage, "defaultProps", {

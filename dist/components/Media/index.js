@@ -129,7 +129,12 @@ function (_PureComponent) {
       var background;
 
       if (props.icon === loaded) {
-        background = {};
+        setTimeout(function () {
+          background = {
+            backgroundImage: '',
+            backgroundColor: 'transparent'
+          };
+        }, 300);
       } else if (placeholder.lqip) {
         background = {
           backgroundImage: "url(\"".concat(placeholder.lqip, "\")")
