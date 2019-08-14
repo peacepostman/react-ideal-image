@@ -217,6 +217,18 @@ Tells how much to wait in milliseconds until consider the download to be slow.
 
 Width of the image in px.
 
+### bottomOffset
+
+> `string` | optionnal
+
+Distance from bottom for waypoint to trigger image show, can be 50px, -50px, 20%, -20%
+
+### topOffset
+
+> `string` | optionnal
+
+Distance from bottom for waypoint to trigger image show, can be 50px, -50px, 20%, -20%
+
 ## Other Solutions
 
 - [react-progressive-image](https://github.com/FormidableLabs/react-progressive-image)

@@ -162,6 +162,10 @@ export default class IdealImage extends Component {
     icons: PropTypes.object.isRequired,
     /** theme object - CSS Modules or React styles */
     theme: PropTypes.object.isRequired,
+    /** Treshold distance from bottom in waypoint  */
+    bottomOffset: PropTypes.string,
+    /** Treshold distance from top in waypoint  */
+    topOffset: PropTypes.string
   }
 
   static defaultProps = {
@@ -335,7 +339,7 @@ export default class IdealImage extends Component {
     const icon = this.props.getIcon(this.state)
     const message = this.props.getMessage(icon, this.state)
     return (
-      <Waypoint onEnter={this.onEnter} onLeave={this.onLeave}>
+      <Waypoint onEnter={this.onEnter} onLeave={this.onLeave} bottomOffset={this.props.bottomOffset} topOffset={this.props.topOffset}>
         <Media
           {...this.props}
           {...fallbackParams(this.props)}
