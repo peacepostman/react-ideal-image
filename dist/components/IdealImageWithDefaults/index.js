@@ -25,9 +25,9 @@ var IdealImageWithDefaults = function IdealImageWithDefaults(props) {
 
 IdealImageWithDefaults.defaultProps = _objectSpread({}, _IdealImage.default.defaultProps, {
   icons: _icons.default,
-  theme: _theme.default // eslint-disable-next-line react/forbid-foreign-prop-types
+  theme: _theme.default
+}); // eslint-disable-next-line react/forbid-foreign-prop-types
 
-});
 IdealImageWithDefaults.propTypes = _IdealImage.default.propTypes;
 var _default = IdealImageWithDefaults;
 exports.default = _default;

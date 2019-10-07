@@ -25,9 +25,9 @@ var MediaWithDefaults = function MediaWithDefaults(props) {
 
 MediaWithDefaults.defaultProps = _objectSpread({}, _Media.default.defaultProps, {
   icons: _icons.default,
-  theme: _theme.default // eslint-disable-next-line react/forbid-foreign-prop-types
+  theme: _theme.default
+}); // eslint-disable-next-line react/forbid-foreign-prop-types
 
-});
 MediaWithDefaults.propTypes = _Media.default.propTypes;
 var _default = MediaWithDefaults;
 exports.default = _default;

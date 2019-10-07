@@ -21,7 +21,9 @@ var _helpers = require("../helpers");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {}; if (desc.get || desc.set) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; return newObj; } }
+function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; if (obj != null) { var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -64,18 +66,18 @@ var defaultShouldAutoDownload = function defaultShouldAutoDownload(_ref) {
       effectiveType = connection.effectiveType;
 
   switch (effectiveType) {
-    case 'slow-2g':
-    case '2g':
+    case "slow-2g":
+    case "2g":
       return false;
 
-    case '3g':
+    case "3g":
       if (downlink && size && threshold) {
         return size * 8 / (downlink * 1000) + rtt < threshold;
       }
 
       return false;
 
-    case '4g':
+    case "4g":
     default:
       return true;
   }
@@ -88,7 +90,7 @@ var defaultGetMessage = function defaultGetMessage(icon, state) {
       return null;
 
     case _constants.icons.loading:
-      return 'Loading...';
+      return "Loading...";
 
     case _constants.icons.load:
       // we can show `alt` here
@@ -96,23 +98,23 @@ var defaultGetMessage = function defaultGetMessage(icon, state) {
       var size = pickedSrc.size;
 
       if (size) {
-        return ['Click to load (', _react.default.createElement("nobr", {
+        return ["Click to load (", _react.default.createElement("nobr", {
           key: "nb"
-        }, (0, _helpers.bytesToSize)(size)), ')'];
+        }, (0, _helpers.bytesToSize)(size)), ")"];
       } else {
-        return 'Click to load';
+        return "Click to load";
       }
 
     case _constants.icons.offline:
-      return 'Your browser is offline. Image not loaded';
+      return "Your browser is offline. Image not loaded";
 
     case _constants.icons.error:
       var loadInfo = state.loadInfo;
 
       if (loadInfo === 404) {
-        return '404. Image not found';
+        return "404. Image not found";
       } else {
-        return 'Error. Click to reload';
+        return "Error. Click to reload";
       }
 
     default:
@@ -199,7 +201,7 @@ function (_Component) {
       _this.loadStateChange(loading, userTriggered);
 
       var threshold = _this.props.threshold;
-      var loader = _this.props.loader === 'xhr' ? (0, _loaders.xhrLoader)(url) : (0, _loaders.imageLoader)(url);
+      var loader = _this.props.loader === "xhr" ? (0, _loaders.xhrLoader)(url) : (0, _loaders.imageLoader)(url);
       loader.then(function () {
         _this.clear();
 
@@ -218,7 +220,7 @@ function (_Component) {
         var timeoutLoader = (0, _loaders.timeout)(threshold);
         timeoutLoader.then(function () {
           if (!_this.loader) return;
-          window.document.dispatchEvent(new CustomEvent('possiblySlowNetwork', {
+          window.document.dispatchEvent(new CustomEvent("possiblySlowNetwork", {
             detail: {
               possiblySlowNetwork: true
             }
@@ -261,9 +263,9 @@ function (_Component) {
         pickedSrc: pickedSrc,
         shouldAutoDownload: shouldAutoDownload,
         url: url
+      }, function () {
+        if (shouldAutoDownload) _this.load(false);
       });
-
-      if (shouldAutoDownload) _this.load(false);
     });
 
     _defineProperty(_assertThisInitialized(_this), "onLeave", function () {
@@ -315,7 +317,7 @@ function (_Component) {
           }
         };
 
-        navigator.connection.addEventListener('onchange', this.updateConnection);
+        navigator.connection.addEventListener("onchange", this.updateConnection);
       } else if (this.props.threshold) {
         this.possiblySlowNetworkListener = function (e) {
           if (_this2.state.loadState !== initial) return;
@@ -328,7 +330,7 @@ function (_Component) {
           }
         };
 
-        window.document.addEventListener('possiblySlowNetwork', this.possiblySlowNetworkListener);
+        window.document.addEventListener("possiblySlowNetwork", this.possiblySlowNetworkListener);
       }
 
       this.updateOnlineStatus = function () {
@@ -338,8 +340,8 @@ function (_Component) {
       };
 
       this.updateOnlineStatus();
-      window.addEventListener('online', this.updateOnlineStatus);
-      window.addEventListener('offline', this.updateOnlineStatus);
+      window.addEventListener("online", this.updateOnlineStatus);
+      window.addEventListener("offline", this.updateOnlineStatus);
     }
   }, {
     key: "componentWillUnmount",
@@ -347,13 +349,13 @@ function (_Component) {
       this.clear();
 
       if (_helpers.nativeConnection) {
-        navigator.connection.removeEventListener('onchange', this.updateConnection);
+        navigator.connection.removeEventListener("onchange", this.updateConnection);
       } else if (this.props.threshold) {
-        window.document.removeEventListener('possiblySlowNetwork', this.possiblySlowNetworkListener);
+        window.document.removeEventListener("possiblySlowNetwork", this.possiblySlowNetworkListener);
       }
 
-      window.removeEventListener('online', this.updateOnlineStatus);
-      window.removeEventListener('offline', this.updateOnlineStatus);
+      window.removeEventListener("online", this.updateOnlineStatus);
+      window.removeEventListener("offline", this.updateOnlineStatus);
     }
   }, {
     key: "clear",
@@ -396,7 +398,7 @@ function (_Component) {
       }, _react.default.createElement(_Media.default, _extends({}, this.props, (0, _helpers.fallbackParams)(this.props), {
         onClick: this.onClick,
         icon: icon,
-        src: this.state.url || '',
+        src: this.state.url || "",
         onDimensions: function onDimensions(dimensions) {
           return _this3.setState({
             dimensions: dimensions
@@ -424,7 +426,7 @@ _defineProperty(IdealImage, "propTypes", {
     width: _propTypes.default.number.isRequired,
     src: _propTypes.default.string,
     size: _propTypes.default.number,
-    format: _propTypes.default.oneOf(['jpeg', 'webp'])
+    format: _propTypes.default.oneOf(["jpeg", "webp"])
   })).isRequired,
 
   /** function which decides if image should be downloaded */
@@ -437,7 +439,7 @@ _defineProperty(IdealImage, "propTypes", {
   getIcon: _propTypes.default.func,
 
   /** type of loader */
-  loader: _propTypes.default.oneOf(['image', 'xhr']),
+  loader: _propTypes.default.oneOf(["image", "xhr"]),
 
   /** Width of the image in px */
   width: _propTypes.default.number.isRequired,
@@ -473,5 +475,5 @@ _defineProperty(IdealImage, "defaultProps", {
   shouldAutoDownload: defaultShouldAutoDownload,
   getMessage: defaultGetMessage,
   getIcon: defaultGetIcon,
-  loader: 'xhr'
+  loader: "xhr"
 });

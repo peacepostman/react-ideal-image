@@ -11,13 +11,6 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-/**
- * returns new "promise" with cancel function combined
- *
- * @param {Promise} p1 - first "promise" with cancel
- * @param {Promise} p2 - second "promise" with cancel
- * @returns {Promise} - new "promise" with cancel
- */
 var combineCancel = function combineCancel(p1, p2) {
   if (!p2) return p1;
   var result = p1.then(function (x) {
